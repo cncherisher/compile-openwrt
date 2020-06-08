@@ -233,6 +233,9 @@ CONFIG_SQLITE3_FTS4=y
 CONFIG_SQLITE3_FTS5=y
 CONFIG_SQLITE3_JSON1=y
 CONFIG_SQLITE3_RTREE=y
+# CONFIG_PACKAGE_ddns-scripts is not set
+# CONFIG_PACKAGE_ddns-scripts_aliyun is not set
+# CONFIG_PACKAGE_ddns-scripts_dnspod is not set
 # CONFIG_TARGET_ROOTFS_INITRAMFS is not set
 # CONFIG_UnblockNeteaseMusic_Go is not set
 # CONFIG_UnblockNeteaseMusic_NodeJS is not set
