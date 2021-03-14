@@ -50,7 +50,11 @@ jobs:
         sudo -E ln -sf /usr/include/asm-generic /usr/include/asm
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
+        sudo timedatectl set-timezone "$TZ"
+        sudo mkdir -p /workdir
+        sudo chown $USER:$GROUPS /workdir
         sudo -E swapoff -a
+        dpkg -l | grep ^rc | awk '{print $2}' | sudo xargs dpkg -P
         sudo -E rm -rf /usr/share/dotnet /etc/mysql /etc/php /usr/local/lib/android /opt/ghc /swapfile
 
     - name: Clone source code
@@ -117,7 +121,7 @@ jobs:
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       run: |
         cd openwrt/bin/targets/*/*
-        rm -rf packages
+        rm -rf packages config.buildinfo feeds.buildinfo sha256sums version.buildinfo *.manifest
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "::set-output name=status::success"
 
